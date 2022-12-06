@@ -74,7 +74,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[Anchor's HTML] expected:<\"[John Locke]\"> but was:<\"[<h3>Ben Linus</h3>]\">");
+                    "[Anchor's HTML] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"<h3>Ben Linus</h3>\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"John Locke\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -91,7 +96,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my prefix Anchor's HTML] expected:<\"[John Locke]\"> but was:<\"[<h3>Ben Linus</h3>]\">");
+                    "[my prefix Anchor's HTML] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"<h3>Ben Linus</h3>\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"John Locke\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -125,7 +135,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my anchor HTML] expected:<\"[John Locke]\"> but was:<\"[<h3>Ben Linus</h3>]\">");
+                    "[my anchor HTML] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"<h3>Ben Linus</h3>\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"John Locke\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -204,7 +219,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[(ignore case mode)  my anchor HTML] expected:<\"<h3>Ada [Lovelace]</h3>\"> but was:<\"<h3>Ada [Byron]</h3>\">");
+                    "[(ignore case mode)  my anchor HTML] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"<h3>Ada Byron</h3>\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"<h3>Ada Lovelace</h3>\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -538,8 +558,12 @@ public class WidgetAssertTest extends GwtTestTest {
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
-            assertThat(e.getMessage()).isEqualTo(
-                    "[Anchor's styleName] expected:<\"[not-my-style]\"> but was:<\"[first second]\">");
+            assertThat(e.getMessage()).isEqualTo("[Anchor's styleName] \r\n" +
+                    "Expecting:\r\n" +
+                    " <\"first second\">\r\n" +
+                    "to be equal to:\r\n" +
+                    " <\"not-my-style\">\r\n" +
+                    "but was not.");
         }
     }
 
@@ -574,8 +598,12 @@ public class WidgetAssertTest extends GwtTestTest {
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
-            assertThat(e.getMessage()).isEqualTo(
-                    "[my anchor styleName] expected:<\"[not-my-style]\"> but was:<\"[first second]\">");
+            assertThat(e.getMessage()).isEqualTo("[my anchor styleName] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"first second\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"not-my-style\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -626,7 +654,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[Anchor's stylePrimaryName] expected:<\"[not-my-style]\"> but was:<\"[primary]\">");
+                    "[Anchor's stylePrimaryName] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"primary\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"not-my-style\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -662,7 +695,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my anchor stylePrimaryName] expected:<\"[not-my-style]\"> but was:<\"[primary]\">");
+                    "[my anchor stylePrimaryName] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"primary\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"not-my-style\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -711,7 +749,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[Anchor's text] expected:<\"[John Locke]\"> but was:<\"[Ben Linus]\">");
+                    "[Anchor's text] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"Ben Linus\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"John Locke\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -745,7 +788,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my anchor text] expected:<\"[John Locke]\"> but was:<\"[Ben Linus]\">");
+                    "[my anchor text] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"Ben Linus\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"John Locke\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -793,7 +841,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[Anchor's title] expected:<\"[John Locke]\"> but was:<\"[Lost 108]\">");
+                    "[Anchor's title] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"Lost 108\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"John Locke\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -810,7 +863,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my prefix Anchor's title] expected:<\"[John Locke]\"> but was:<\"[Lost 108]\">");
+                    "[my prefix Anchor's title] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"Lost 108\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"John Locke\">\r\n" +
+                            "but was not.");
         }
     }
 
@@ -844,7 +902,12 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my anchor title] expected:<\"[John Locke]\"> but was:<\"[Lost 108]\">");
+                    "[my anchor title] \r\n" +
+                            "Expecting:\r\n" +
+                            " <\"Lost 108\">\r\n" +
+                            "to be equal to:\r\n" +
+                            " <\"John Locke\">\r\n" +
+                            "but was not.");
         }
     }
 
