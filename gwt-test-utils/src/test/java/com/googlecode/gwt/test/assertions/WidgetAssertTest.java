@@ -6,6 +6,7 @@ import com.googlecode.gwt.test.GwtTestTest;
 import org.junit.Test;
 
 import static com.googlecode.gwt.test.assertions.GwtAssertions.assertThat;
+import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Fail.fail;
 
@@ -24,7 +25,7 @@ public class WidgetAssertTest extends GwtTestTest {
             assertThat(a).hasStyle("first-style", "second-style", "third-style");
         } catch (AssertionError e) {
             // Then
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -57,7 +58,7 @@ public class WidgetAssertTest extends GwtTestTest {
             GwtAssertions.assertThat(a).htmlEquals("<h3>Ben Linus</h3>");
         } catch (AssertionError e) {
             // Then
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -74,12 +75,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[Anchor's HTML] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"<h3>Ben Linus</h3>\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"John Locke\">\r\n" +
-                            "but was not.");
+                    "[Anchor's HTML] \r\nExpecting:\r\n <\"<h3>Ben Linus</h3>\">\r\nto be equal to:\r\n <\"John Locke\">\r\nbut was not.");
         }
     }
 
@@ -96,12 +92,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my prefix Anchor's HTML] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"<h3>Ben Linus</h3>\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"John Locke\">\r\n" +
-                            "but was not.");
+                    "[my prefix Anchor's HTML] \r\nExpecting:\r\n <\"<h3>Ben Linus</h3>\">\r\nto be equal to:\r\n <\"John Locke\">\r\nbut was not.");
         }
     }
 
@@ -113,8 +104,8 @@ public class WidgetAssertTest extends GwtTestTest {
 
         // When
         try {
-            GwtAssertions.assertThat(a).overridingErrorMessage("custom error message").as("my anchor").htmlEquals(
-                    "John Locke");
+            GwtAssertions.assertThat(a).overridingErrorMessage("custom error message").as("my anchor")
+                    .htmlEquals("John Locke");
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
@@ -135,12 +126,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my anchor HTML] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"<h3>Ben Linus</h3>\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"John Locke\">\r\n" +
-                            "but was not.");
+                    "[my anchor HTML] \r\nExpecting:\r\n <\"<h3>Ben Linus</h3>\">\r\nto be equal to:\r\n <\"John Locke\">\r\nbut was not.");
         }
     }
 
@@ -152,8 +138,7 @@ public class WidgetAssertTest extends GwtTestTest {
 
         // When
         try {
-            GwtAssertions.assertThat(a).overridingErrorMessage("custom error message").htmlEquals(
-                    "John Locke");
+            GwtAssertions.assertThat(a).overridingErrorMessage("custom error message").htmlEquals("John Locke");
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
@@ -171,7 +156,7 @@ public class WidgetAssertTest extends GwtTestTest {
         try {
             GwtAssertions.assertThat(a).htmlEqualsIgnoreCase("<h3>ben LInus</h3>");
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -186,7 +171,7 @@ public class WidgetAssertTest extends GwtTestTest {
             GwtAssertions.assertThat(a).htmlEqualsIgnoreCase("");
             GwtAssertions.assertThat(a).htmlEqualsIgnoreCase(null);
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -202,7 +187,7 @@ public class WidgetAssertTest extends GwtTestTest {
             GwtAssertions.assertThat(a).htmlEqualsIgnoreCase("");
             GwtAssertions.assertThat(a).htmlEqualsIgnoreCase(null);
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -219,12 +204,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[(ignore case mode)  my anchor HTML] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"<h3>Ada Byron</h3>\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"<h3>Ada Lovelace</h3>\">\r\n" +
-                            "but was not.");
+                    "[(ignore case mode)  my anchor HTML] \r\nExpecting:\r\n <\"<h3>Ada Byron</h3>\">\r\nto be equal to:\r\n <\"<h3>Ada Lovelace</h3>\">\r\nbut was not.");
         }
     }
 
@@ -238,7 +218,7 @@ public class WidgetAssertTest extends GwtTestTest {
         try {
             assertThat(a).isAttached();
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -311,7 +291,7 @@ public class WidgetAssertTest extends GwtTestTest {
         try {
             GwtAssertions.assertThat(a).isNotAttached();
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -389,7 +369,7 @@ public class WidgetAssertTest extends GwtTestTest {
         try {
             GwtAssertions.assertThat(a).isNotVisible();
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -462,7 +442,7 @@ public class WidgetAssertTest extends GwtTestTest {
         try {
             GwtAssertions.assertThat(a).isVisible();
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -541,7 +521,7 @@ public class WidgetAssertTest extends GwtTestTest {
         try {
             assertThat(a).styleNameEquals("first second");
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -558,12 +538,8 @@ public class WidgetAssertTest extends GwtTestTest {
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
-            assertThat(e.getMessage()).isEqualTo("[Anchor's styleName] \r\n" +
-                    "Expecting:\r\n" +
-                    " <\"first second\">\r\n" +
-                    "to be equal to:\r\n" +
-                    " <\"not-my-style\">\r\n" +
-                    "but was not.");
+            assertThat(e.getMessage()).isEqualTo(
+                    "[Anchor's styleName] \r\nExpecting:\r\n <\"first second\">\r\nto be equal to:\r\n <\"not-my-style\">\r\nbut was not.");
         }
     }
 
@@ -576,8 +552,8 @@ public class WidgetAssertTest extends GwtTestTest {
 
         // When
         try {
-            assertThat(a).as("my anchor").overridingErrorMessage("custom error message").styleNameEquals(
-                    "not-my-style");
+            assertThat(a).as("my anchor").overridingErrorMessage("custom error message")
+                    .styleNameEquals("not-my-style");
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
@@ -598,12 +574,8 @@ public class WidgetAssertTest extends GwtTestTest {
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
-            assertThat(e.getMessage()).isEqualTo("[my anchor styleName] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"first second\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"not-my-style\">\r\n" +
-                            "but was not.");
+            assertThat(e.getMessage()).isEqualTo(
+                    "[my anchor styleName] \r\nExpecting:\r\n <\"first second\">\r\nto be equal to:\r\n <\"not-my-style\">\r\nbut was not.");
         }
     }
 
@@ -616,8 +588,7 @@ public class WidgetAssertTest extends GwtTestTest {
 
         // When
         try {
-            assertThat(a).overridingErrorMessage("custom error message").styleNameEquals(
-                    "not-my-style");
+            assertThat(a).overridingErrorMessage("custom error message").styleNameEquals("not-my-style");
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
@@ -636,7 +607,7 @@ public class WidgetAssertTest extends GwtTestTest {
         try {
             assertThat(a).stylePrimaryNameEquals("primary");
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -654,12 +625,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[Anchor's stylePrimaryName] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"primary\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"not-my-style\">\r\n" +
-                            "but was not.");
+                    "[Anchor's stylePrimaryName] \r\nExpecting:\r\n <\"primary\">\r\nto be equal to:\r\n <\"not-my-style\">\r\nbut was not.");
         }
     }
 
@@ -672,8 +638,8 @@ public class WidgetAssertTest extends GwtTestTest {
 
         // When
         try {
-            assertThat(a).as("my anchor").overridingErrorMessage("my custom error").stylePrimaryNameEquals(
-                    "not-my-style");
+            assertThat(a).as("my anchor").overridingErrorMessage("my custom error")
+                    .stylePrimaryNameEquals("not-my-style");
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
@@ -695,12 +661,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my anchor stylePrimaryName] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"primary\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"not-my-style\">\r\n" +
-                            "but was not.");
+                    "[my anchor stylePrimaryName] \r\nExpecting:\r\n <\"primary\">\r\nto be equal to:\r\n <\"not-my-style\">\r\nbut was not.");
         }
     }
 
@@ -713,8 +674,7 @@ public class WidgetAssertTest extends GwtTestTest {
 
         // When
         try {
-            assertThat(a).overridingErrorMessage("my custom error").stylePrimaryNameEquals(
-                    "not-my-style");
+            assertThat(a).overridingErrorMessage("my custom error").stylePrimaryNameEquals("not-my-style");
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
@@ -732,7 +692,7 @@ public class WidgetAssertTest extends GwtTestTest {
         try {
             GwtAssertions.assertThat(a).textEquals("Ben Linus");
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -749,12 +709,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[Anchor's text] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"Ben Linus\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"John Locke\">\r\n" +
-                            "but was not.");
+                    "[Anchor's text] \r\nExpecting:\r\n <\"Ben Linus\">\r\nto be equal to:\r\n <\"John Locke\">\r\nbut was not.");
         }
     }
 
@@ -766,8 +721,8 @@ public class WidgetAssertTest extends GwtTestTest {
 
         // When
         try {
-            GwtAssertions.assertThat(a).overridingErrorMessage("custom error message").as("my anchor").textEquals(
-                    "John Locke");
+            GwtAssertions.assertThat(a).overridingErrorMessage("custom error message").as("my anchor")
+                    .textEquals("John Locke");
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
@@ -788,12 +743,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my anchor text] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"Ben Linus\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"John Locke\">\r\n" +
-                            "but was not.");
+                    "[my anchor text] \r\nExpecting:\r\n <\"Ben Linus\">\r\nto be equal to:\r\n <\"John Locke\">\r\nbut was not.");
         }
     }
 
@@ -805,8 +755,7 @@ public class WidgetAssertTest extends GwtTestTest {
 
         // When
         try {
-            GwtAssertions.assertThat(a).overridingErrorMessage("custom error message").textEquals(
-                    "John Locke");
+            GwtAssertions.assertThat(a).overridingErrorMessage("custom error message").textEquals("John Locke");
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
@@ -824,7 +773,7 @@ public class WidgetAssertTest extends GwtTestTest {
         try {
             GwtAssertions.assertThat(a).titleEquals("Lost 108");
         } catch (AssertionError e) {
-            fail("assertion should pass but failed with message : " + e.getMessage());
+            fail(format("assertion should pass but failed with message : %s", e.getMessage()));
         }
     }
 
@@ -841,12 +790,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[Anchor's title] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"Lost 108\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"John Locke\">\r\n" +
-                            "but was not.");
+                    "[Anchor's title] \r\nExpecting:\r\n <\"Lost 108\">\r\nto be equal to:\r\n <\"John Locke\">\r\nbut was not.");
         }
     }
 
@@ -863,12 +807,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my prefix Anchor's title] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"Lost 108\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"John Locke\">\r\n" +
-                            "but was not.");
+                    "[my prefix Anchor's title] \r\nExpecting:\r\n <\"Lost 108\">\r\nto be equal to:\r\n <\"John Locke\">\r\nbut was not.");
         }
     }
 
@@ -880,8 +819,8 @@ public class WidgetAssertTest extends GwtTestTest {
 
         // When
         try {
-            GwtAssertions.assertThat(a).overridingErrorMessage("custom error message").as("my anchor").titleEquals(
-                    "John Locke");
+            GwtAssertions.assertThat(a).overridingErrorMessage("custom error message").as("my anchor")
+                    .titleEquals("John Locke");
             fail("AssertionError should be thrown");
         } catch (AssertionError e) {
             // Then
@@ -902,12 +841,7 @@ public class WidgetAssertTest extends GwtTestTest {
         } catch (AssertionError e) {
             // Then
             assertThat(e.getMessage()).isEqualTo(
-                    "[my anchor title] \r\n" +
-                            "Expecting:\r\n" +
-                            " <\"Lost 108\">\r\n" +
-                            "to be equal to:\r\n" +
-                            " <\"John Locke\">\r\n" +
-                            "but was not.");
+                    "[my anchor title] \r\nExpecting:\r\n <\"Lost 108\">\r\nto be equal to:\r\n <\"John Locke\">\r\nbut was not.");
         }
     }
 
